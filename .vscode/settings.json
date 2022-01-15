@@ -1,0 +1,17 @@
+{
+	"files.associations": {
+		"ios": "cpp",
+		"ostream": "cpp",
+		"iostream": "cpp",
+		"__config": "cpp",
+		"string": "cpp",
+		"limits": "cpp",
+		"deque": "cpp",
+		"complex": "cpp",
+		"type_traits": "cpp",
+		"vector": "cpp",
+		"queue": "cpp",
+		"utility": "cpp"
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
+}
