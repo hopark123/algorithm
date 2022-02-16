@@ -1,47 +1,77 @@
 #include <iostream>
-#include <map>
-#include <string.h>
-
 using namespace std;
 
-map<int, int> _map;
-int main() {
-	int N; cin >> N;
-	scanf("%d", &N);
-	char str[100] = {0,};
-	// string str;
-	int		num;
-	while (N--) {
-		scanf("%s", str);
-		if (!strcmp(str, ("add"))) {
-			scanf("%d", &num);
-			_map.insert(make_pair(num, 0));
+// 출력
+void	show(int *a) {
+for (int i = 32; i > 0; i--) {
+		cout << ((*a & (1 << (i - 1))) ? 1 : 0 );
+	}
+}
+// 초기화(null)
+void	init(int *a) {
+	*a = 0;
+}
+// 모두 포함
+void	full(int *a) {
+	*a = -1;
+}
+// i 번째 인덱스 삽입
+void	set(int *a, int i) {
+	*a |= (1 << i);
+}
+// i 번째 인덱스 삭제
+void	drop(int *a, int i) {
+	*a &= ~(1 << i);
+}
+// i 번째 인덱스 확인
+bool	check(int *a, int i) {
+	return (*a & (1 << i));
+}
+// i 번째 toggle (1 은 0으로 0은 1으로) (xor 연산 ^)
+void	toggle(int *a, int i) {
+	*a ^= (1 << i);
+}
+// 마지막 원소 구하기
+int		getLast(int *a) {
+	return (*a & -*a);
+}
+// 마지막 원소 삭제하기
+void	dropLast(int *a) {
+	*a &= (*a - 1);
+}
+
+int main () {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int	M; cin >> M;
+	int	bit;
+	init(&bit);
+	while (M--) {
+		string str; cin >> str;
+		int		temp;
+		if (!str.compare("add")) {
+			cin >> temp;
+			set(&bit, temp);
 		}
-		else if (!strcmp(str, ("remove"))) {
-			scanf("%d", &num);
-			_map.erase(num);
+		else if (!str.compare("remove")) {
+			cin >> temp;
+			drop(&bit, temp);
 		}
-		else if (!strcmp(str, ("check"))) {
-			scanf("%d", &num);
-			if (_map.find(num) != _map.end())
-				printf("1\n");
-			else
-				printf("0\n");
+		else if (!str.compare("check")) {
+			cin >> temp;
+			cout << check(&bit, temp) << "\n";
 		}
-		else if (!strcmp(str, ("toggle"))) {
-			scanf("%d", &num);
-			if (_map.find(num) != _map.end())
-				_map.erase(num);
-			else
-				_map.insert(make_pair(num,0));
+		else if (!str.compare("toggle")) {
+			cin >> temp;
+			toggle(&bit, temp);
 		}
-		else if (!strcmp(str, ("all"))) {
-			for (int i = 1; i <= 20; i++)
-				_map.insert(make_pair(i, 0));
+		else if (!str.compare("all")) {
+			full(&bit);
 		}
-		else if (!strcmp(str, ("empty"))) {
-			_map.clear();
+		else if (!str.compare("empty")) {
+			init(&bit);
 		}
 	}
-
 }
