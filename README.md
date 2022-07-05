@@ -4,5 +4,5 @@
 ## 💻 사용언어
 ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)   ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 
-[![Solved.ac
-polkm789](http://mazassumnida.wtf/api/generate_badge?boj={handle})](https://solved.ac/{handle})
+## 🏆 백준 티어
+[![Solved.ac Profile](http://mazassumnida.wtf/api/generate_badge?boj=polkm789)](https://solved.ac/polkm789)
