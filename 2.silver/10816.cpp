@@ -21,6 +21,6 @@ int main() {
 	while (M--)
 	{
 		cin >> temp;
-		cout << upper_bound(vec.begin(), vec.end(), temp) - lower_bound(vec.begin(), vec.end(), temp) << " ";
+		cout << _bound(vec.begin(), vec.end(), temp) - lower_bound(vec.begin(), vec.end(), temp) << " ";
 	}
 }
