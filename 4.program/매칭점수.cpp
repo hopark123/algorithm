@@ -1,12 +1,13 @@
+#include <iostream>
 #include <string>
 #include <vector>
-#include <iostream>
-#include <stack>
-#include <algorithm>
-#include <math.h>
-#include <queue>
-#include <set>
+
 using namespace std;
+
+int solution(string word, vector<string> pages) {
+    int answer = 0;
+    return answer;
+}
 
 int main()
 {
@@ -14,7 +15,6 @@ int main()
   vector<vector<string> > a;
   vector<string> b;
  
-  b.clear();
   int sol = solution(a);
   cout << sol << endl;
 }

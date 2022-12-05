@@ -4,8 +4,10 @@
 #include <stack>
 #include <algorithm>
 #include <math.h>
-#include <queue>
 using namespace std;
+
+
+// 좌표 dfs 기본
 
 int dx[4] = {0, 0, -1, 1};
 int dy[4] = {1, -1, 0, 0};

@@ -11,15 +11,11 @@ using namespace std;
 
 
 bool check(string s, string word, int st) {
-  // cout << "[" << s << "][" << word << "][" << st <<"]";
   for (int i = 0; i < word.length(); ++i) {
     if (s[st + i] != word[i]) {
-      // cout << "f" << endl;
       return false;
     }
   }
-    // cout << "t" << endl;
-
   return true;
 }
 
@@ -44,7 +40,6 @@ int sol(string s, int len) {
   }
   for (; i < s.length(); ++i)
     temp += s[i];
-  // cout << "["<<temp << "]" << endl;
   res = temp.size();  
   return (res);
 }

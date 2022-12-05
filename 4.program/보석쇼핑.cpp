@@ -24,9 +24,7 @@ vector<int> solution(vector<string> gems) {
       st.insert(it);
     }
     while(1) {
-      cout << mp.size() <<"="<< st.size() << endl;
       if (mp.size() == st.size()) {
-        cout << "lo" << lo << endl;
         vec.push_back(make_pair(lo + 1, hi));
         if (mp[gems[lo]] == lo) {
           mp.erase(gems[lo]);
@@ -40,13 +38,9 @@ vector<int> solution(vector<string> gems) {
         if (hi >= gems.size()) {
           break ;
         }
-        cout << "hi[" << gems[hi] << "]:" << hi<< endl;
         mp[gems[hi]] = hi;
         ++hi;
       }
-    }
-    for (auto &it : vec) {
-      cout << it.first << " " << it.second << endl;
     }
     sort(vec.begin(), vec.end(), comp);
     answer.push_back(vec[0].first);

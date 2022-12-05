@@ -48,6 +48,13 @@ int solution(int n, vector<string> data) {
 // resizE
 visited.resize(4, vector<int>(4, 1e7));
 
+bool Compare(pair<int, int>a, pair<int, int>b) {
+	if (a.first == b.first)
+		return a.second < b.second;
+	else return a.first < b.first;
+}
+sort(vec.begin(), vec.end(), Compare);
+ 
 class _Compare {
 	public :
 	bool operator() (pair<int, bool> a, pair<int, bool> b) {
@@ -88,3 +95,4 @@ vector<int> dij(int st, int x, int y) {
 }
 
 int cnt = res.end() - lower_bound(res.begin(), res.end(), stoi(query[7]));
+
