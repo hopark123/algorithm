@@ -18,12 +18,10 @@ class Node {
     Node(int _nbr, int _y, int _x) : nbr(_nbr), x(_x), y(_y), left(NULL), right(NULL) {};
 
     void insert(Node *par, Node *child) {
-      // cout << par->nbr << "->";
       if (par->x > child->x) {
         if (par->left)
           insert(par->left, child);
         else {
-          // cout <<"left"<< child->nbr << endl;
           par->left = child;
         }
       }
@@ -31,7 +29,6 @@ class Node {
         if (par->right)
           insert(par->right, child);
         else {
-          // cout <<"right"<< child->nbr;
           par->right = child;
         }
       }
@@ -81,11 +78,8 @@ vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
 
     while (!pq.empty()) {
       Node *temp = pq.top(); pq.pop();
-      // cout << temp->nbr << "[" << temp->y << "][" << temp->x << "]" << endl;
-      // cout << "insert" << temp->nbr << endl;
       tree->insert(tree, temp);
     }
-    // cout << "--" << endl;
     tree->pre_order(tree, pre_res);
     tree->post_order(tree, post_res);
     answer.push_back(pre_res);

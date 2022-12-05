@@ -1,3 +1,56 @@
+
+#include <vector>
+#include <string>
+#include <iostream>
+using namespace std;
+
+vector<vector<int> > board;
+
+
+int M, N;
+
+int mod(int a, int b) {
+    return ((a % 1000000007) + (b % 1000000007)) % 1000000007;
+}
+
+int solution(int m, int n, vector<vector<int>> puddles) {
+    int answer = 0;
+    M = m; N = n;
+    board.resize(N + 1, vector<int>(M + 1, 0));
+    for (int i = 0; i < puddles.size(); ++i) {
+      board[puddles[i][1]][puddles[i][0]] = -1;
+    }
+    board[1][1] = 1;
+    for (int i = 1; i <= N; ++i) {
+        for (int j = 1; j <= M; ++j) {
+            if (board[i][j] == -1)
+                continue;
+            if (board[i - 1][j] != -1)
+                board[i][j] = mod(board[i][j] , board[i - 1][j]);
+            if (board[i][j - 1] != -1)
+                board[i][j] = mod(board[i][j], board[i][j - 1]);
+        }
+    }
+    return board[N][M];
+}
+
+int main()
+{
+  ios::sync_with_stdio(false);
+  vector<vector<string> > a;
+  vector<string> b;
+ 
+  b.clear();
+  int sol = solution(5, 4, {{2, 2}, {3,3}});
+  // int sol = solution(4, 3, 0);
+  cout << sol << endl;
+}
+
+
+/* 잘못된 풀이 ( dp인데 dfs로 품)
+
+
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -24,24 +77,11 @@ long long mod(long long res) {
 }
 
 void dfs(int y, int x, int step) {
-    // for (int i = 1; i <= N; ++i) {
-    //     for (int j = 1 ; j <= M; ++j) {
-    //         if (board[i][j] == 1e7)
-    //             cout << "x" << " ";
-    //         else
-    //             cout << board[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
-    // cout << endl;
-    // cout << endl;
     if (y == N && x == M) {
         mmin = min(step, mmin);
         res.push_back(step);
         return;
     }
-    // if (y > N || x < M || step > 100)
-    //     return ;
     for (int i = 0; i < 2; ++i) {
         int ty = y + dy[i];
         int tx = x + dx[i];
@@ -63,25 +103,6 @@ int solution(int m, int n, vector<vector<int>> puddles) {
     board[1][1] = 0;
     dfs(1, 1, 1);
     sort(res.begin(), res.end());
-    // for (int i = 0; i < res.size(); ++i)
-    //   cout << res[i] << " ";
-    // cout << endl;
     return mod(upper_bound(res.begin(), res.end(), mmin) - res.begin());
 }
-int main()
-{
-  ios::sync_with_stdio(false);
-  vector<vector<string> > a;
-  vector<string> b;
- 
-  b.clear();
-  int sol = solution(5, 4, {{2, 2}, {3,3}});
-  // int sol = solution(4, 3, 0);
-  cout << sol << endl;
-}
-
-
-/*
-
-
 */

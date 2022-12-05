@@ -12,10 +12,7 @@ using namespace std;
 vector<pair<int, int> > cost[50005];
 queue<int> intens;
 priority_queue<int> pq;
-// set<int> sset;
-// unordered_set<int> sset;
 bool sset[50005];
-// unordered_set<int> gset;
 bool gset[50005];
 int maxDIs = 0;
 
@@ -58,9 +55,7 @@ vector<int> dijkstra(int N, vector<int> gates) {
 
 vector<int> solution(int n, vector<vector<int>> paths, vector<int> gates, vector<int> summits) {
     vector<int> answer(2, INF);
-    // cost.resize(n + 1);
     for (int i = 0; i < summits.size(); ++i) {
-      // sset.insert(summits[i]);
       sset[summits[i]] = true;
     }
     for (int i = 0; i < gates.size(); ++i) {
@@ -70,9 +65,8 @@ vector<int> solution(int n, vector<vector<int>> paths, vector<int> gates, vector
       cost[paths[i][0]].push_back(make_pair(paths[i][1], paths[i][2]));
       cost[paths[i][1]].push_back(make_pair(paths[i][0], paths[i][2]));
     }
-      vector<int> visited;
-      answer = dijkstra(n, gates);
-
+    vector<int> visited;
+    answer = dijkstra(n, gates);
     return answer;
 }
 

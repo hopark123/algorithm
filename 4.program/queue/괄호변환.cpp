@@ -29,19 +29,13 @@ void ft_answer(int index, string p) {
           else {
             q.pop();
             res_front.push_back('(');
-            // res_front.push_back('{');
             ft_answer(i + 1 , p);
             res_front.push_back(')');
-            // res_front.push_back('}');
             while (!q.empty()) {
               if (q.size() == 1)
                 break ;
               char c = q.front() + pow(-1, q.front() - 40);
               res_front.push_back(c);
-              // if (q.front() == '(')
-              //   res_front.push_back(']');
-              // else if (q.front() == ')')
-              //   res_front.push_back('[');
               q.pop();
             }
             return ;
